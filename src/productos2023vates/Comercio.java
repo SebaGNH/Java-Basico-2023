@@ -13,11 +13,34 @@ public class Comercio {
     public void agregarProducto(Producto p){
         productos.add(p);
     }
+    
+    // Modificar un producto       
+    public void modificarProducto(String id, Producto pEdit) {
+        for (Producto pr : productos) {
+            if (pr.getIdProducto().equals(id)) {
+                pr.setNombreProducto(pEdit.getNombreProducto());
+                pr.setPrecio(pEdit.getPrecio());
+                pr.setTipoCategoria(pEdit.getTipoCategoria());
+                break;
+            }
+        }
+    }
+    
+    public void eliminarProducto(String id) {
+        for (int i = 0; i < productos.size(); i++) {
+            Producto pr = productos.get(i);
+            if (pr.getIdProducto().equals(id)) {
+                productos.remove(i);
+                break;
+            }
+        }
+    }
+    
 
     public String listarProductos(){
         String listaProducto = "";
         for (Producto p : productos) {
-            listaProducto = "";
+            listaProducto = p.toString();
         }
         return listaProducto;
     }
@@ -45,5 +68,7 @@ public class Comercio {
         }
         return p.toString();
     }
+       
+        
 }
 
